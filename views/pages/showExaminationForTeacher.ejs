@@ -67,7 +67,8 @@
             <ul class="nav nav-tabs">
               <li class="nav-item"><a class="nav-link active">รายการสอบ</a></li>
             </ul>
-
+            <br>
+           
             <table class="table table-striped" style="text-align: center">
               <thead>
                 <tr>
@@ -80,35 +81,34 @@
               </thead>
 
               <tbody>
-
                 <%
-                for(let i = 0 ; i < staff.examination.length ; i++){
-                  for(let j = 0 ; j < staff.examination[i].room.length ; j++){
-                    for(let k = 0 ; k < staff.examination[i].room[j].examiner.length ; k++){
-
-                    if(staff.examination[i].room[j].examiner[k]+"" == staff._id){%>
+                  for(let i = 0 ; i < teacher.examination.length ; i++){
+                    for(let j = 0 ; j < teacher.examination[i].room.length ; j++){
+                      for(let k = 0 ; k < teacher.examination[i].room[j].examiner.length ; k++){
+                      if(teacher.examination[i].room[j].examiner[k]+"" == teacher._id){%>
                 <tr>
+                    <td>
+                        <%=teacher.examination[i].course.sub_id.sub_id%>
+                      </td>
+                      <td>
+                        <%=teacher.examination[i].course.sub_id.sub_name%>
+                      </td>
+                      <td>
+                          <%=teacher.examination[i].date%>
+                        </td>
                   <td>
-                    <%=staff.examination[i].course.sub_id.sub_id%>
+                    <%=teacher.examination[i].timeStart%>
                   </td>
                   <td>
-                    <%=staff.examination[i].course.sub_id.sub_name%>
-                  </td>
-                  <td>
-                      <%=staff.examination[i].date%>
-                    </td>
-                  <td>
-                    <%=staff.examination[i].timeStart%>
-                  </td>
-                  <td>
-                    <%=staff.examination[i].timeFinish%>
+                    <%=teacher.examination[i].timeFinish%>
                   </td>
                 </tr>
                 <%}
+                    }
                   }
-                }
-                }
-                %>
+                  }
+                  %>
+
 
               </tbody>
 

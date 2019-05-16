@@ -45,7 +45,7 @@
                                   -->
                     <td><b>จำนวนสินิตในคอร์ส</b></td>
                     <td><b>จัดการคอร์สเรียน</b></td>
-                    <td><b>แก้ไข</b></td>
+                   <!-- <td><b>แก้ไข</b></td>-->
                     <td><b>ลบ</b></td>
                   </tr>
                 </thead>
@@ -65,11 +65,16 @@
                                       -->
                     <td><a href="/manageCourse/courseInfo/<%= course[i]._id%>"
                         class="btn btn-primary">จัดการคอร์สเรียน</a></td>
-                    <td>
+
+                        <!--
+                          <td>
                       <button type="submit" class="btn btn-warning" data-toggle="modal" data-toggle="modal"
                         data-target=".editcourseModal"
                         onclick="editcourse('<%= course[i]._id %>','<%= course[i].course_teacher %>','<%= course[i].course_student %>','<%= course[i].course_test %>','<%= course[i].course_id %>','<%= course[i].course_name %>','<%= course[i].section %>')">แก้ไข</button>
                     </td>
+                        -->
+
+
                     <td><a href="/manageCourse/delete/<%= course[i]._id %>/<%= sub_id %>" class="btn btn-danger">ลบ</a>
                     </td>
                   </tr>

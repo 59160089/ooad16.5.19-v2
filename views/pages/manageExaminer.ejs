@@ -48,7 +48,7 @@
                               arrExaminer.push(exam.examiner[i]._id+'')
                           }
                           for(let i=0; i < examiner.length ; i++) {
-                             if(examiner[i].uType != 'student'){
+                             if(examiner[i].uType != 'student' && examiner[i].uType != 'admin'){
                               if(!arrExaminer.includes(examiner[i]._id+'')){
                           %>
                   <tr>

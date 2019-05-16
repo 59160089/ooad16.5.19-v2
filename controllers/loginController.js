@@ -21,7 +21,7 @@ module.exports = {
                     //if login == true password correct
                     if (login) {
                         if (user.uType === 'teacher') {
-                            res.redirect('/menu/teacher')
+                         res.render('pages/teacherMenu',{user : user})
                         } else if (user.uType === 'staff') {
                             res.render('pages/staffMenu' , {user : user})
                         } else if (user.uType === 'student') {

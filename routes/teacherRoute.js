@@ -8,4 +8,9 @@ router.route('/post').post(Controller.post)
 router.route('/update').post(Controller.update)
 router.route('/delete/:id').get(Controller.delete)
 router.route('/info/:id').get(Controller.info)
+router.get('/showExaminationList/:teacherId', (req,res) => {
+    require('../models/modelTeacher').findById(req.params.teacherId , (err , teacher) => {
+        res.render('pages/showExaminationForTeacher' , {teacher:teacher})
+    }).populate({path: "examination" ,  populate : [{path:"course" , populate : {path : "sub_id"}} , {path:'room'}] })
+})
 module.exports = router
