@@ -84,7 +84,20 @@
                 for(let i = 0 ; i < staff.examination.length ; i++){
                   for(let j = 0 ; j < staff.examination[i].room.length ; j++){
                     if(staff.examination[i].room[j].examiner+"" == staff._id){%>
-                      
+                      <tr>
+                        <td>
+                          <%=staff.examination[i].course.sub_id.sub_id%>
+                        </td>
+                        <td>
+                            <%=staff.examination[i].course.sub_id.sub_name%>
+                          </td>
+                          <td>
+                              <%=staff.examination[i].timeStart%>
+                            </td>
+                            <td>
+                                <%=staff.examination[i].timeFinish%>
+                              </td>
+                      </tr>
                 <%}
                   }
                 }
