@@ -13,4 +13,10 @@ router.get('/showExaminationList/:teacherId', (req,res) => {
         res.render('pages/showExaminationForTeacher' , {teacher:teacher})
     }).populate({path: "examination" ,  populate : [{path:"course" , populate : {path : "sub_id"}} , {path:'room'}] })
 })
+
+router.get('/showCourse/:teacherId' , (req,res) => {
+    require('../models/modelTeacher').findById(req.params.teacherId , (err , teacher) => {
+        res.render('pages/showCourseForTeacher', {teacher , teacher})
+    }).populate({path : 'course' , populate : {path : 'sub_id'}})
+})
 module.exports = router
