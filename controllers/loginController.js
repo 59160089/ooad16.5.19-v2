@@ -23,7 +23,7 @@ module.exports = {
                         if (user.uType === 'teacher') {
                             res.redirect('/menu/teacher')
                         } else if (user.uType === 'staff') {
-                            res.redirect('/menu/admin')
+                            res.render('pages/staffMenu' , {user : user})
                         } else if (user.uType === 'student') {
                             res.render('pages/studentMenu' , {user : user})
                         } else if (user.uType === 'admin') {

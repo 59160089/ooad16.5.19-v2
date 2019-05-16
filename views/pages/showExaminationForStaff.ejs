@@ -67,7 +67,7 @@
             <ul class="nav nav-tabs">
               <li class="nav-item"><a class="nav-link active">รายการสอบ</a></li>
             </ul>
-
+            <%=staff.examination[0]%>
             <table class="table table-striped" style="text-align: center">
               <thead>
                 <tr>
@@ -75,34 +75,21 @@
                   <td><b>ชื่อรายวิชา</b></td>
                   <td><b>เวลาเริ่ม</b></td>
                   <td><b>เวลาสิ้นสุด</b></td>
-                  <td><b>ห้อง - ที่นั่ง</b></td>
                 </tr>
               </thead>
 
               <tbody>
-                <% for(let i = 0 ; i < stu.course.length ; i++ ) {
-                    for(let j = 0 ; j < stu.course[i].exam.length ; j++){
-                      for(let k = 0 ; k < stu.course[i].exam[j].score.length ; k++){
-                        console.log(stu.course[i].exam[j].score[k])
-                        if(stu.course[i].exam[j].score[k].studentId+'' == stu._id+''){%>
-                <tr>
-                  <td>
-                    <%=stu.course[i].sub_id.sub_id%>
-                  </td>
-                  <td>
-                    <%=stu.course[i].sub_id.sub_name%>
-                  </td>
-                  <td>
-                    <%=stu.course[i].exam[j].timeStart%>
-                  </td>
-                  <td>
-                    <%=stu.course[i].exam[j].timeFinish%>
-                  </td>
-                  <td>
-                    <%=stu.course[i].exam[j].score[k].seatStatus%>
-                  </td>
-                </tr>
-                <%}}}}%>
+
+                <%
+                for(let i = 0 ; i < staff.examination.length ; i++){
+                  for(let j = 0 ; j < staff.examination[i].room.length ; j++){
+                    if(staff.examination[i].room[j].examiner+"" == staff._id){%>
+                      
+                <%}
+                  }
+                }
+                %>
+
               </tbody>
 
             </table>

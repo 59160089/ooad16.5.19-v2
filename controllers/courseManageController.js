@@ -163,10 +163,10 @@ module.exports = {
     manageTestRoom: (req, res) => {
         Room.find({}, (err, room) => {
             Exam.findById(req.params.examId, (err, exam) => {
-              //  console.log(exam)
-              require('../models/modelCourse').findById(req.params.courseId , (err , course) =>{
-                res.render('pages/manageTestRoom', { exam: exam, room: room ,course:course})
-              })
+                //  console.log(exam)
+                require('../models/modelCourse').findById(req.params.courseId, (err, course) => {
+                    res.render('pages/manageTestRoom', { exam: exam, room: room, course: course })
+                })
             }).populate('room')
         }).populate('building')
     },
@@ -223,12 +223,14 @@ module.exports = {
         }).populate(['sub_id', 'teacher', 'student', 'exam'])
     },
     addExam: (req, res) => {
+
         var exam = new Exam(req.body)
         console.log(req.body)
         Course.findById(req.params.courseId, (err, course) => {
             for (let i = 0; i < course.student.length; i++) {
                 exam.score.push({ studentId: course.student[i]._id, point: '0', seatStatus: 'null' })
             }
+            exam.course = course
             exam.save()
             var arrExam = course.exam
             arrExam.push(exam)
@@ -236,6 +238,7 @@ module.exports = {
             course.save()
             res.redirect(`/manageCourse/courseInfo/${req.params.courseId}`)
         })
+
     },
     addTestRoom: (req, res) => {
         require('../models/modelRoom').findById(req.params.roomId, (err, room) => {
@@ -299,19 +302,34 @@ module.exports = {
         }).populate('examiner')
     },
     addExaminer: (req, res) => {
+
         require('../models/modelExam').findById(req.params.examId, (err, exam) => {
             require('../models/modelRoom').findById(req.params.roomId, (err, room) => {
-                exam.examiner.push(req.params.examinerId)
-                room.examiner.push(req.params.examinerId)
-                exam.save().then(result => {
-                    room.save().then(result => {
-                        res.redirect(`/manageCourse/manageExaminer/${exam._id}/${room._id}`)
+                require('../models/user').findById(req.params.examinerId, (err, examiner) => {
+                    examiner.examination.push(exam)
+                    examiner.save()
+                    exam.examiner.push(req.params.examinerId)
+                    room.examiner.push(req.params.examinerId)
+                    exam.save().then(result => {
+                        room.save().then(result => {
+                            res.redirect(`/manageCourse/manageExaminer/${exam._id}/${room._id}`)
+                        })
                     })
                 })
+
             })
         })
+
     },
     deleteExaminer: (req, res) => {
+        require('../models/user').findById(req.params.examinerId , (err , examiner) => {
+            for(let i = 0 ; i < examiner.examination.length ; i ++){
+                if(req.params.examId == examiner.examination[i]._id+""){
+                    examiner.examination.splice(i,1)
+                }
+            }
+            examiner.save()
+        })
         require('../models/modelExam').findById(req.params.examId, (err, exam) => {
             require('../models/modelRoom').findById(req.params.roomId, (err, room) => {
                 console.log(room.examiner)

@@ -14,7 +14,11 @@ var User = new Schema ({
     lastName : String,
     uType : {
         type : String
-    }
+    },
+    examination : [{
+        type : Schema.Types.ObjectId ,
+        ref : 'modelExam'
+    }]
 },{
     collection : 'person'
 })

@@ -30,7 +30,7 @@ var User = new Schema({
     position: {
         type: String
     },
-    examiner : [{
+    examination : [{
         type : Schema.Types.ObjectId ,
         ref : 'modelExam'
     }]

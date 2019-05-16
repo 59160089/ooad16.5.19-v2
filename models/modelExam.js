@@ -27,6 +27,9 @@ var exam = new Schema({
     coruse : {
         type : Schema.Types.ObjectId,
         ref  : 'modelCourse'
+    },
+    course : {
+        type : Schema.Types.ObjectId ,ref : 'modelCourse'
     }
 }, { collation: 'exam' })
 
