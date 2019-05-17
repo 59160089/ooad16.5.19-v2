@@ -13,6 +13,15 @@ mongoose.connection
 beforeEach((done) => {
     mongoose.connection.collections.person.drop(() => {
          //this function runs after the drop is completed
-        done(); //go ahead everything is done now.
+        //done(); //go ahead everything is done now.
+        mongoose.connection.collections.modelexams.drop(() => {
+            //this function runs after the drop is completed
+           done(); //go ahead everything is done now.
+       });
+       
     }); 
+
+  
+    
+
 });
