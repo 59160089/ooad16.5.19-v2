@@ -27,9 +27,8 @@ module.exports = {
                         } else if (user.uType === 'student') {
                             res.render('pages/studentMenu' , {user : user})
                         } else if (user.uType === 'admin') {
-                            res.redirect('/menu/admin')
+                            res.render('pages/adminMenu' , {user : user})
                         } else {
-                         
                             require('../models/modelYear').find({}, function (err , year) {
                                 res.render('pages/login', { err: true  , year : year}) 
                             })

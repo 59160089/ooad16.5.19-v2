@@ -31,8 +31,16 @@
     <li class="nav-item active">
       <a class="nav-link" href="#">
         <i class="fas fa-fw fa-table"></i>
-        <span>ดูการสอบ</span></a>
+        <span>ดูการคุมสอบ</span></a>
     </li>
+    <hr class="sidebar-divider">
+
+    <li class="nav-item">
+      <a class="nav-link" href="/manageTeacher/showCourse/<%=teacher._id%>">
+        <i class="fas fa-fw fa-table"></i>
+        <span>จัดการคอร์สเรียน</span></a>
+    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
@@ -68,7 +76,7 @@
               <li class="nav-item"><a class="nav-link active">รายการสอบ</a></li>
             </ul>
             <br>
-           
+
             <table class="table table-striped" style="text-align: center">
               <thead>
                 <tr>
@@ -87,15 +95,15 @@
                       for(let k = 0 ; k < teacher.examination[i].room[j].examiner.length ; k++){
                       if(teacher.examination[i].room[j].examiner[k]+"" == teacher._id){%>
                 <tr>
-                    <td>
-                        <%=teacher.examination[i].course.sub_id.sub_id%>
-                      </td>
-                      <td>
-                        <%=teacher.examination[i].course.sub_id.sub_name%>
-                      </td>
-                      <td>
-                          <%=teacher.examination[i].date%>
-                        </td>
+                  <td>
+                    <%=teacher.examination[i].course.sub_id.sub_id%>
+                  </td>
+                  <td>
+                    <%=teacher.examination[i].course.sub_id.sub_name%>
+                  </td>
+                  <td>
+                    <%=teacher.examination[i].date%>
+                  </td>
                   <td>
                     <%=teacher.examination[i].timeStart%>
                   </td>

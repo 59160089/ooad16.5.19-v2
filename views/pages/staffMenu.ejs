@@ -1,5 +1,11 @@
 <%- include('../layouts/Header'); -%>
 <%- include('../layouts/CSS'); -%>
+<script>
+  function setUtype() {
+    sessionStorage.setItem('uType','<%=user.uType%>')
+    getUtype()
+  }
+  </script>
 <%- include('../layouts/endHeader'); -%>
 
 <div id="wrapper">

@@ -4,7 +4,81 @@
 
 <div id="wrapper">
 
-  <%- include('../layouts/Sidebar'); -%>
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon rotate-n-15">
+      <i class="fas fa-laugh-wink"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+  </a>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item active" >
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+      aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>จัดการผู้ใช้</span>
+    </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">เลือก user</h6>
+        <a class="collapse-item" href="/manageStudent">นิสิต</a>
+        <a class="collapse-item" href="/manageStaff">เจ้าหน้าที่</a>
+        <a class="collapse-item" href="/manageTeacher">อาจารย์</a>
+      </div>
+    </div>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Nav Item - Pages Collapse Menu -->
+
+  <!-- Nav Item - Charts -->
+  <li class="nav-item">
+    <a class="nav-link" href="/manageBuilding">
+      <i class="fas fa-fw fa-table"></i>
+      <span>จัดการตึก</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">
+
+  <!-- Nav Item - Tables -->
+  <li class="nav-item">
+    <a class="nav-link" href="/manageSubject">
+      <i class="fas fa-fw fa-table"></i>
+      <span>จัดการคอร์สเรียน</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">
+
+  <li class="nav-item">
+    <a class="nav-link" href="/manageYear">
+      <i class="fas fa-fw fa-table"></i>
+      <span>จัดการปีการศึกษา</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">
+
+  <li class="nav-item">
+    <a class="nav-link" href="/login">
+      <i class="fas fa-fw fa-table"></i>
+      <span>ออกจากระบบ</span></a>
+  </li>
+
+</ul>
 
 
   <!-- Content Wrapper -->
@@ -31,7 +105,7 @@
 
             <div style="clear: both"></div>
             <div style="height: 300px !important; overflow: auto;">
-              <table class="table table-striped" id="sampleTable">
+              <table class="table table-striped" id="sampleTable" style="text-align: center">
                 <thead>
                   <tr>
                     <td><b>รหัสนิสิต</b></td>
@@ -40,8 +114,8 @@
                     <td><b>สาขา</b></td>
                     <td><b>ชั้นปี</b></td>
                     <td><b>สาย</b></td>
-                    <td><b>กลุ่มเรียน</b></td>
-                    <td><b>ข้อมูลเพิ่มเติม</b></td>
+               
+                  
                     <td><b>แก้ไข</b></td>
                     <td><b>ลบ</b></td>
                   </tr>
@@ -55,8 +129,7 @@
                     <td><%= person[i].major %></td>
                     <td><%= person[i].year %></td>
                     <td><%= person[i].branch %></td>
-                    <td><%= person[i].sector %></td>
-                    <td><a href="#" class="btn btn-primary">ตรวจสอบ</a></td>
+                    
                     <td><button style="float: right;" type="submit" class="btn btn-primary" data-toggle="modal"
                         data-toggle="modal" data-target=".updateStudent"
                         onclick="editStudent('<%= person[i]._id %>','<%= person[i].username %>','<%= person[i].password %>','<%= person[i].uType %>','<%= person[i].studentId %>','<%= person[i].prefixName %>','<%= person[i].firstName %>','<%= person[i].lastName %>','<%= person[i].faculty %>','<%= person[i].major %>','<%= person[i].year %>','<%= person[i].branch %>','<%= person[i].sector %>')">Edit</button>
