@@ -82,6 +82,7 @@
                 <tr>
                   <td><b>รหัสรายวิชา</b></td>
                   <td><b>ชื่อรายวิชา</b></td>
+                  <td><b>ห้อง</b></td>
                   <td><b>วันที่</b></td>
                   <td><b>เวลาเริ่ม</b></td>
                   <td><b>เวลาสิ้นสุด</b></td>
@@ -100,6 +101,9 @@
                   </td>
                   <td>
                     <%=teacher.examination[i].course.sub_id.sub_name%>
+                  </td>
+                  <td>
+                    <%=teacher.examination[i].room[j].name%>
                   </td>
                   <td>
                     <%=teacher.examination[i].date%>
