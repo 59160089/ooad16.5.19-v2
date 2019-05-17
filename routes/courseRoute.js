@@ -25,5 +25,14 @@ router.route('/manageExaminer/:examId/:roomId').get(Controller.manageExaminer)
 router.route('/manageExaminer/add/:examinerId/:examId/:roomId').get(Controller.addExaminer)
 router.route('/manageExaminer/delete/:examinerId/:examId/:roomId').get(Controller.deleteExaminer)
 
+router.get('/courseInfoForTeacher/:courseId/:teacherId' , (req,res)=>{
+    require('../models/modelTeacher').findById(req.params.teacherId , (err,teacher) => {
+        require('../models/modelCourse').findById(req.params.courseId,(err,course)=>{
+            res.render('pages/courseInfoForTeacher' , {course : course , teacher : teacher})
+        }).populate(['sub_id', 'teacher', 'student', 'exam'])
+    })
+})
+
+
 
 module.exports = router

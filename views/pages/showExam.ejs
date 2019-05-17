@@ -73,6 +73,7 @@
                 <tr>
                   <td><b>รหัสรายวิชา</b></td>
                   <td><b>ชื่อรายวิชา</b></td>
+                  <td><b>วันที่</b></td>
                   <td><b>เวลาเริ่ม</b></td>
                   <td><b>เวลาสิ้นสุด</b></td>
                   <td><b>ห้อง - ที่นั่ง</b></td>
@@ -91,6 +92,9 @@
                   </td>
                   <td>
                     <%=stu.course[i].sub_id.sub_name%>
+                  </td>
+                  <td>
+                   <%= stu.course[i].exam[j].date%>
                   </td>
                   <td>
                     <%=stu.course[i].exam[j].timeStart%>
